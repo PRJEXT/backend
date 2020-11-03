@@ -1,5 +1,5 @@
-// const express = require('express')
-// const mongoose = require('mongoose')
+// import { Router } from 'express'
+// import { Mongoose } from 'mongoose'
 
 // const app = express()
 
