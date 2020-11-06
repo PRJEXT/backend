@@ -4,7 +4,6 @@ import studentController from '../controllers/student-controller.js'
 
 const router = express.Router();
 
-// rota meramente ilustrativa.
-router.use('/student', studentController.create)
+router.post('/student', studentController.create)
 
 export default router
