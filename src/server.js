@@ -1,14 +1,8 @@
-// import { Router } from 'express'
-// import { Mongoose } from 'mongoose'
+import app from './config/app.js'
+import http from 'http'
 
-// const app = express()
+const PORT = 8080
 
-// mongoose.connect('mongodp://localhost:27107/nodeapi', { useNewUrlParser: true })
+const server = http.createServer(app)
 
-// app.get('/', (req, res) => {
-//   res.send('GOOGLE')
-// })
-
-// app.listen(3001, () => {
-//   console.log('running on 3001')
-// })
+server.listen(process.env.PORT || PORT, () => console.log('Listening request'))
