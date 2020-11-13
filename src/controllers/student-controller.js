@@ -6,7 +6,9 @@
 
 class StudentController {
   create(request, response) {
-    const { avaliacaoMateria, avaliacaoEnsino, comentario } = request.body
+    console.log('Body: ', request.body);
+  
+    response.status(200).json({ success: true });
   }
 }
 
