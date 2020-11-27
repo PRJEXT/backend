@@ -6,10 +6,10 @@
 
 class StudentController {
   create(request, response) {
-    console.log('Body: ', request.body);
-  
-    response.status(200).json({ success: true });
+    console.log('Body: ', request.body)
+
+    response.status(200).json({ success: true })
   }
 }
 
-export default new StudentController();
+export default new StudentController()
