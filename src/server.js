@@ -1,4 +1,4 @@
-import app from './config/app.js'
+import app from './app.js'
 import http from 'http'
 
 const server = http.createServer(app)

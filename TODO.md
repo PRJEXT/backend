@@ -1,21 +1,5 @@
-<div align="center">
+# TODO
 
-  # COISAS A FAZER :milky_way:
-
-</div>
-
-</br>
-
-## :new_moon: TODOS (coisas a fazer)
-
-* [ ] configurar projeto acessar banco com o Mongoose
-* [ ] create some middlewares to run with my application
-* [ ] criar debug para o projeto e adicionar instruções ao README
-* [ ] criar .env para configurações de variaveis de ambiente
-
-</br>
-
-## :full_moon: DONE (coisas que já foram feitas) ✓
-
-* [x] incorporar regras de negócio
-* [x] configurar projeto com os padrões de código
+* [ ] configurar controller do estudante
+* [ ] configurar service para conectar-se com mongo via mongoose e enviar os dados ao banco
+* [ ] desalocar mongodb do app, separar o mongodb numa configuracao dentro de "database" e deixar o app junto com server no src

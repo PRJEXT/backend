@@ -1,7 +1,7 @@
 import express from 'express'
 import env from 'dotenv'
 import mongoose from 'mongoose'
-import router from './app.routes.js'
+import router from './routes/app.routes.js'
 import cors from 'cors'
 
 class App {
