@@ -25,4 +25,4 @@ const Avaliacao = new mongoose.Schema(
   }
 )
 
-module.exports = mongoose.model('Avaliacao', Avaliacao)
+export default mongoose.model('Avaliacao', Avaliacao)
