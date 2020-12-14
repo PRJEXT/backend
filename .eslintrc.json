@@ -22,7 +22,8 @@
       "prettier/prettier": ["error", {
        "endOfLine":"auto"
      }],
-     "no-unused-vars": "off"
+     "no-unused-vars": "off",
+     "camelcase": "off"
     },
 
     "settings": {
