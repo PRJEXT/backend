@@ -1,8 +1,10 @@
 import express from 'express'
 import env from 'dotenv'
 import mongoose from 'mongoose'
-import router from './routes/app.routes.js'
 import cors from 'cors'
+
+import router from './routes/app.routes.js'
+import authMiddleware from './middlewares/auth-middleware.js'
 
 class App {
   constructor() {
@@ -19,6 +21,7 @@ class App {
   middlewares() {
     this.app.use(cors())
     this.app.use(express.json())
+    this.app.use('/public/*', authMiddleware.checkCredentials)
   }
 
   staticFolder() {

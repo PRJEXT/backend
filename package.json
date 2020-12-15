@@ -8,12 +8,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/server.js",
     "config": "git clone https://github.com/PRJEXT/frontend.git public && cd public && npm i && cd .. && npm i",
-    "update-fe": "cd frontend && git pull origin main"
+    "update-fe": "cd public && git pull origin main"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "eslint-config-standard": "^14.1.1",
