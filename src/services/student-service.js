@@ -1,12 +1,12 @@
-import Avaliacao from '../database/schemas/avaliacao.js'
+import Review from '../database/schemas/review.js'
 
 class StudentService {
-  async execute(id_aluno, id_disciplina, data_avaliacao, av_comentario) {
-    const avaliacao = new Avaliacao({
-      id_aluno,
-      id_disciplina,
-      data_avaliacao,
-      av_comentario
+  async execute(studentId, classId, reviewDate, review) {
+    const avaliacao = new Review({
+      studentId,
+      classId,
+      reviewDate,
+      review
     })
 
     avaliacao.save(err => {
