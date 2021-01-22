@@ -1,21 +1,21 @@
 import mongoose from 'mongoose'
 import uuid from 'uuidv4'
 
-const Avaliacao = new mongoose.Schema(
+const Review = new mongoose.Schema(
   {
-    id_aluno: {
+    studentId: {
       type: uuid,
       required: true
     },
-    id_disciplina: {
+    classId: {
       type: uuid,
       required: true
     },
-    data_avaliacao: {
+    reviewDate: {
       type: String,
       required: true
     },
-    av_comentario: {
+    review: {
       type: String,
       required: true
     }
@@ -25,4 +25,4 @@ const Avaliacao = new mongoose.Schema(
   }
 )
 
-export default mongoose.model('Avaliacao', Avaliacao)
+export default mongoose.model('Review', Review)
