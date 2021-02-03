@@ -11,6 +11,40 @@ class ReviewService {
 
     return newReview
   }
+
+  async positiveCount() {
+    const query = await Review.aggregate([
+      {
+        $match: {
+          sentiment: 'positivo'
+        }
+      },
+      {
+        $count: 'positiveCount'
+      }
+    ])
+
+    const { positiveCount } = query[0]
+
+    return positiveCount
+  }
+
+  async negativeCount() {
+    const query = await Review.aggregate([
+      {
+        $match: {
+          sentiment: 'negativo'
+        }
+      },
+      {
+        $count: 'negativeCount'
+      }
+    ])
+
+    const { negativeCount } = query[0]
+
+    return negativeCount
+  }
 }
 
 export default new ReviewService()

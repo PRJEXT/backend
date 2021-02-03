@@ -7,5 +7,6 @@ const router = express.Router()
 
 router.post('/review', reviewController.create)
 router.post('/institution', institutionController.create)
+router.get('/dashboard', reviewController.dashboardResult)
 
 export default router
