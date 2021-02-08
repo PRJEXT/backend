@@ -7,14 +7,14 @@ class InstitutionService {
     return institution
   }
 
-  async checkCredentials(name, key, domain, cb) {
+  async checkCredentials(name, key, cb) {
     const institution = await Institution.findOne({ name })
 
     if (!institution) {
       throw Error('Usuario ou chave nao existem')
     }
 
-    const keysMatch = institution.compareKeys(key, (error, match) => {
+    institution.compareKeys(key, (error, match) => {
       if (error) {
         throw Error(error)
       }
