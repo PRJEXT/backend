@@ -20,6 +20,23 @@ class ReviewController {
       response.status(500).send(error)
     }
   }
+
+  async dashboardResult(request, response) {
+    try {
+      const positiveCount = await reviewService.positiveCount()
+      const negativeCount = await reviewService.negativeCount()
+
+      const result = {
+        positiveCount: positiveCount,
+        negativeCount: negativeCount,
+        totalCount: positiveCount + negativeCount
+      }
+
+      response.status(200).json(result)
+    } catch (error) {
+      response.status(500).send(error)
+    }
+  }
 }
 
 export default new ReviewController()
