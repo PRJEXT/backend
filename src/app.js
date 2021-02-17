@@ -2,9 +2,9 @@ import express from 'express'
 import env from 'dotenv'
 import mongoose from 'mongoose'
 import cors from 'cors'
+import session from 'express-session'
 
 import router from './routes/app.routes.js'
-import authMiddleware from './middlewares/auth-middleware.js'
 
 class App {
   constructor() {
@@ -13,7 +13,6 @@ class App {
     this.app = express()
 
     this.middlewares()
-    this.staticFolder()
     this.routes()
     this.database()
   }
@@ -21,11 +20,7 @@ class App {
   middlewares() {
     this.app.use(cors())
     this.app.use(express.json())
-    this.app.use('/public/*', authMiddleware.checkCredentials)
-  }
-
-  staticFolder() {
-    this.app.use('/public', express.static('public'))
+    this.app.use(session({ secret: 'secret', cookie: {} }))
   }
 
   routes() {
