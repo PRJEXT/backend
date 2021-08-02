@@ -2,7 +2,6 @@ import express from 'express'
 import env from 'dotenv'
 import mongoose from 'mongoose'
 import cors from 'cors'
-import session from 'express-session'
 
 import router from './routes/app.routes.js'
 
@@ -20,7 +19,6 @@ class App {
   middlewares() {
     this.app.use(cors())
     this.app.use(express.json())
-    this.app.use(session({ secret: 'secret', cookie: {} }))
   }
 
   routes() {
@@ -28,6 +26,8 @@ class App {
   }
 
   database() {
+    console.log(process.env.MONGO_URI)
+
     mongoose.connect(process.env.MONGO_URI, {
       useUnifiedTopology: true,
       useNewUrlParser: true,

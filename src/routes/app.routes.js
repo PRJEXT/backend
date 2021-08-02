@@ -1,14 +1,18 @@
 import express from 'express'
 
 import authMiddleware from '../middlewares/auth-middleware.js'
-import reviewController from '../controllers/review-controller.js'
-import institutionController from '../controllers/institution-controller.js'
+import userController from '../controllers/user.controller.js'
 
 const router = express.Router()
 
-router.use('/public', authMiddleware.checkCredentials, express.static('public'))
-router.post('/review', reviewController.create)
-router.post('/institution', institutionController.create)
-router.get('/dashboard', reviewController.dashboardResult)
+// USER ROUTES
+router.get('/api/user/nonce/:publicAddress', userController.getNonce)
+router.get('/api/user', userController.get)
+router.post(
+  '/api/signIn',
+  authMiddleware.publicAddressExists,
+  userController.create
+)
+router.post('/api/user/signup', userController.signUp)
 
 export default router
