@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 
 export const jwtSign = ({ publicAddress }) => {
-  return jwt.sign(publicAddress, 'secret_key')
+  return jwt.sign({ publicAddress }, 'secret_key')
 }
 
 export const jwtVerify = ({ token }) => {

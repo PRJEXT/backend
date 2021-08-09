@@ -9,9 +9,9 @@ const router = express.Router()
 router.get('/api/user/nonce/:publicAddress', userController.getNonce)
 router.get('/api/user', userController.get)
 router.post(
-  '/api/signIn',
+  '/api/user/signIn',
   authMiddleware.publicAddressExists,
-  userController.create
+  userController.signIn
 )
 router.post('/api/user/signup', userController.signUp)
 

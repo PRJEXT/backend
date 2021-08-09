@@ -3,10 +3,40 @@ import verifySignature from '../utils/verify-signature.js'
 import { jwtSign } from '../utils/jwt.js'
 
 class UserController {
+  async signIn(req, res) {
+    const { publicAddress, signature } = req.body
+
+    try {
+      console.log('About to get the user', publicAddress, signature)
+
+      const user = await userService.get(publicAddress)
+
+      console.log('I got the user')
+
+      const isVerified = verifySignature({
+        publicAddress,
+        signature,
+        nonce: user.nonce
+      })
+
+      console.log('Is verified: ', isVerified)
+
+      const token = jwtSign({ publicAddress })
+
+      console.log('User is authenticated: ', token, user)
+
+      await userService.updateNonce(publicAddress)
+
+      console.log('Is updating nonce')
+
+      res.json({ token, user })
+    } catch (err) {
+      res.status(401).json({ message: err.message })
+    }
+  }
+
   async signUp(req, res) {
     const { publicAddress, signature, name, bio } = req.body
-
-    console.log('Body of the request: ', req.body)
 
     const user = await userService.get(publicAddress)
 
@@ -30,16 +60,6 @@ class UserController {
     const token = await jwtSign({ publicAddress })
 
     res.json({ token, user: newUser })
-  }
-
-  async create(req, res) {
-    const { publicAddress, name, bio } = req.body
-
-    if (!publicAddress) {
-      return res.state(500).json({ message: 'Public address is required' })
-    }
-
-    await userService.create({ publicAddress, name, bio })
   }
 
   async get(req, res) {

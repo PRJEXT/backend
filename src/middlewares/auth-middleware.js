@@ -4,10 +4,8 @@ class AuthMiddleware {
   async publicAddressExists(req, res, next) {
     const user = await userService.get(req.body.publicAddress)
 
-    user
-      ? res
-          .status(403)
-          .json({ message: 'The public address is already registered' })
+    !user
+      ? res.status(403).json({ message: 'Public address not registered' })
       : next()
   }
 }
